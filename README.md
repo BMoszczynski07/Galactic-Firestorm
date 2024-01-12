@@ -7,8 +7,8 @@ Galactic Firestorm is a game written in python (pygame library). In this game yo
 
 ## Ship steering
 
-A key -> to the left \n
-D key -> to the right \n
+A key -> to the left,
+D key -> to the right,
 Space -> shot
 
 # Good luck, trailbrazer!
