@@ -23,12 +23,14 @@ class Page(pygame.sprite.Sprite):
 
         self.start_game_btn = pygame.image.load("assets/graphics/GUI/green-btn.png")
         self.start_game_btn = pygame.transform.scale(self.start_game_btn, (220, 220 / 3.95))
+        self.start_game_rect = self.start_game_btn.get_rect()
 
         self.quit_game_btn = pygame.image.load("assets/graphics/GUI/red-btn.png")
         self.quit_game_btn = pygame.transform.scale(self.quit_game_btn, (220, 220 / 3.95))
+        self.quit_game_rect = self.quit_game_btn.get_rect()
 
         self.start_text = self.sub_font.render("Start game", False, (219, 247, 205))
-        self.quit_text = self.sub_font.render("Quit game", False, (255,255,255))
+        self.quit_text = self.sub_font.render("Quit game", False, (255, 201, 201))
 
         self.drawMainPage()
 
@@ -36,6 +38,10 @@ class Page(pygame.sprite.Sprite):
         self.fps_text = self.pixel_type.render(f"FPS: {fps}", False, (0,255,0))
 
         self.screen.blit(self.fps_text, (5,5))
+
+    def checkClick(self, mouse_x, mouse_y):
+        if self.start_game_rect.collidepoint(mouse_x, mouse_y):
+            print("Click!")
 
     def drawMainPage(self):
         screen_width, screen_height = self.screen.get_size()
@@ -65,6 +71,12 @@ class Page(pygame.sprite.Sprite):
         start_x = (screen_width - start_width) // 2
         start_y = 220
         quit_y = start_y + start_height + 10
+
+        self.start_game_rect.x = start_x
+        self.start_game_rect.y = start_y
+
+        self.quit_game_rect.x = start_x
+        self.quit_game_rect.y = quit_y
 
         self.screen.blit(self.start_game_btn, (start_x, start_y))
         self.screen.blit(self.quit_game_btn, (start_x, quit_y))

@@ -14,7 +14,6 @@ pygame.display.set_icon(icon)
 
 # variables
 running = True
-max_fps = 300
 
 clock = pygame.time.Clock()
 
@@ -35,10 +34,11 @@ while running:
                 if event.gain == 1:
                     page.drawMainPage()
 
-    # FPS
-    clock.tick(max_fps)
-    fps = clock.get_fps()
-    page.updateFPS(fps)
+            case pygame.MOUSEBUTTONUP:
+                if event.button == 1:
+                    mouse_x, mouse_y = event.pos
+
+                    page.checkClick(mouse_x, mouse_y)
 
     pygame.display.flip() # odświeżenie ekranu
 
